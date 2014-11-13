@@ -1,0 +1,32 @@
+---
+
+- name: install server and client packages
+  apt:
+    pkg: '{{item}}'
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - openssh-client
+    - openssh-server
+  tags: package
+
+- name: configure OpenSSH client
+  template:
+    src: ssh_config.j2
+    dest: '{{ openssh_config_path }}'
+    owner: root
+    group: root
+    mode: 0644
+  tags: configuration
+
+- name: configure OpenSSH server
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart ssh
+  tags: configuration
