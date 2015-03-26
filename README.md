@@ -1,24 +1,28 @@
 Ansible OpenSSH Role
 =====================
+[![Build Status](https://travis-ci.org/michaelrigart/ansible-role-openssh.svg?branch=master)](https://travis-ci.org/michaelrigart/ansible-role-openssh)
 
 An ansible role for installing and configuring OpenSSH
 
 Role Variables
 --------------
 
-- openssh_config_path: path to openssh config
-- openssh_client_settings: dict containing openssh client settings
-- openssh_server_settings: dict containing openssh server settings
+```yaml
+openssh_config_path: path to openssh config
+openssh_client_settings: dict containing openssh client settings
+openssh_server_settings: dict containing openssh server settings
+```
 
 View the default vars - defaults/main.yml - for a more detailed example.
-
 
 Example Playbook
 -------------------------
 
-    - hosts: servers
-      roles:
-         - { role: MichaelRigart.openssh }
+```yaml
+- hosts: servers
+  roles:
+     - { role: MichaelRigart.openssh, sudo: Yes }
+```
 
 License
 -------
