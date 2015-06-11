@@ -1,9 +1,3 @@
-{% for key, value in openssh_server_settings.iteritems() %}
-{% if value is string %}
-{{key|e}} {{value|e}}
-{% else %}
-{% for item in value %}
-{{ key|e }}     {{ item|e }}
-{% endfor %}
-{% endif %}
+{% for param in openssh_server_settings %}
+{{ param }}
 {% endfor %}
